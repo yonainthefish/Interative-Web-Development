@@ -1,40 +1,53 @@
+//메뉴 페이지 이동 부분
 const menuItems = document.querySelectorAll(".menu-items li a");
 
 menuItems.forEach((item) => {
   item.addEventListener("click", (event) => {
-    event.preventDefault(); // 기본 동작 중단
-
-    const targetId = item.getAttribute("href").substring(1); // 클릭한 링크의 href 속성에서 '#' 제외한 부분 가져오기
-    const targetSection = document.getElementById(targetId); // 해당 섹션의 DOM 요소 가져오기
+    event.preventDefault(); 
+    const targetId = item.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId); 
 
     if (targetSection) {
       window.scrollTo({
-        top: targetSection.offsetTop, // 해당 섹션의 상단 위치로 스크롤
-        behavior: "smooth", // 부드러운 스크롤 적용
+        top: targetSection.offsetTop, 
+        behavior: "smooth",
       });
     }
   });
 });
 
-/* 각 영역 마우스 휠에 따라 글자 움직임 부분 */
-const sections = document.querySelectorAll("section.form");
-const h2Elements = document.querySelectorAll("section.form h2");
-let currentIndex = 0;
+//메뉴 배경색 변화 부분
+const header = document.querySelector("header");
 
-document.addEventListener("wheel", (event) => {
-  event.preventDefault();
-  const scrollDirection = event.deltaY > 0 ? 1 : -1;
-  currentIndex = Math.min(Math.max(currentIndex + scrollDirection, 0), sections.length - 1);
-  updateContent();
+document.addEventListener("scroll", () => {
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition >= 10) { 
+    header.style.backgroundColor = "#black"; 
+  } else {
+    header.style.backgroundColor = "transparent"; // 스크롤 위치가 100 미만이면 투명 배경색으로 변경합니다.
+  }
 });
 
-const updateContent = () => {
-  h2Elements.forEach((h2) => {
-    h2.classList.remove("active");
-  });
+/* 각 영역 마우스 휠에 따라 글자 움직임 부분 */
+// const sections = document.querySelectorAll("section");
+// const h2Elements = document.querySelectorAll("section h2");
+// let currentIndex = 0;
 
-  h2Elements[currentIndex].classList.add("active");
-};
+// document.addEventListener("wheel", (event) => {
+//   event.preventDefault();
+//   const scrollDirection = event.deltaY > 0 ? 1 : -1;
+//   currentIndex = Math.min(Math.max(currentIndex + scrollDirection, 0), sections.length - 1);
+//   updateContent();
+// });
+
+// const updateContent = () => {
+//   h2Elements.forEach((h2) => {
+//     h2.classList.remove("active");
+//   });
+
+//   h2Elements[currentIndex].classList.add("active");
+// };
 
 /*1영역 */
 let x = 0,
@@ -56,11 +69,36 @@ window.addEventListener("mousemove", (event) => {
   mouseMoveFunc();
 });
 const mouseMoveFunc = () => {
-  human.style.transform = `translateX(${x / 10}px)`;
+  shadow.style.transform = `translateX(${-x / 10}px)`;
   date.style.transform = `translateX(${x / 20}px)`;
-  introConstWrap.style.transform = `translateX(${-x / 20}px)`;
-  textImg.style.transform = `translateX(${x / 10}px)`;
+  human.style.transform = `translateX(${x / 20}px)`;
+  textImg.style.transform = `translateX(${x / 20}px)`;
 };
+
+//2영역
+(function() {
+  const outputElem = document.querySelector('.output');
+  const ilbuniElem = document.querySelector('.singer-poster');
+  let num = 0;
+
+  function showValue() {
+      let posY = ilbuniElem.getBoundingClientRect().top;
+      outputElem.innerHTML = posY;
+
+      if (posY < window.innerHeight * 1) {
+          ilbuniElem.classList.add('zoom');
+      } else {
+          ilbuniElem.classList.remove('zoom');
+      }
+  }
+
+  window.addEventListener('scroll', function() {
+      showValue();
+  });
+
+  showValue();
+
+})();
 
 /*progress bar와*/ /*2 영역*/
 
@@ -77,4 +115,13 @@ window.addEventListener("scroll", () => {
   documentHeight = document.body.scrollHeight - window.innerHeight;
 
   progressBar.style.width = `${percent(scrollNum, documentHeight)}%`;
+});
+
+
+/* 3영역 */
+const scrollContainer = document.querySelector(".sec-clients");
+
+scrollContainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
 });
