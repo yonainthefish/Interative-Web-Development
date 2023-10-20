@@ -20,9 +20,9 @@ a {
 
 body {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   background: url(../images/bg-pc.webp) center / cover no-repeat;
-  /* overflow: hidden; */
+  overflow-x: hidden;
 }
 
 header {
@@ -30,6 +30,7 @@ header {
   width: 100%;
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   z-index: 999;
+  background-color:transparent;
 }
 
 .form {
@@ -71,6 +72,11 @@ header {
   font-size: 25px;
 }
 
+.menu-items li:hover{
+  text-decoration: underline;
+  transition: all 0.2s ease-in-out;
+}
+
 .progressWrap {
   position: fixed;
   top: 0;
@@ -80,6 +86,7 @@ header {
   background-color: #ece4bc;
   z-index: 999;
 }
+
 .bar {
   width: 50%;
   height: inherit;
@@ -88,22 +95,22 @@ header {
   background-color: #158f78;
   transition: width 0.4s ease-in-out;
 }
+
 /*1영역*/
 main {
   width: 100%;
   border: 1px solid transparent;
 }
 
-.contWrap {
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
-
-  position: relative;
-  margin: 0 auto;
-  margin-top: 100px;
+.contWrap {  
   width: 80vw;
   height: 90vh;
   padding: 0 10px;
+  margin: 0 auto;
+  margin-top: 85px;
+  position: relative;
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
 }
 
@@ -122,7 +129,6 @@ main {
 }
 
 .date {
-  /* border: 2px solid forestgreen; */
   right: 200px;
   bottom: 100px;
 }
@@ -156,10 +162,25 @@ main {
   transform: translate(-50%, -50%);
 }
 
+/*추가된 각영역*/
+.innerWrap{
+  /* padding: 20px; */
+    width: 100%;
+    /* height: 10000px; */
+}
+
+
+.textWrap{
+  /* padding: 500px 20px; */
+  background-color: #fff;
+  
+}
+
+
 /* 2번째 영역 */
 #services {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   background: linear-gradient(150deg, #13f0cf, #ddf311, #13f0cf);
 }
@@ -167,10 +188,43 @@ main {
 .slideSection {
   margin: 0 auto;
   width: 80vw;
-  height: 100vh;
-  padding: 10px;
+  /* height: 100vh; */
+  /* padding: 10px; */
   border-left: 2px solid rgba(255, 255, 255, 0.3);
   border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+img {
+  max-width: 100%;
+}
+
+.content {
+padding: 10rem ;
+}
+
+.content h2{
+  font-size: 10rem;
+  line-height: 8rem;
+
+}
+
+.output {
+  position: fixed;
+  left: 0;
+  top: 0;
+  color:transparent;
+}
+
+.singer-poster {
+  width: 100px;
+  margin: 10rem auto;
+  transition: 1s;
+  display: flex;
+  justify-content: center;
+}
+
+.singer-poster.zoom {
+  transform: scale(3);
 }
 
 /* 3번째 영역 */
@@ -184,18 +238,64 @@ main {
 .slideSection {
   margin: 0 auto;
   width: 80vw;
-  height: 100vh;
+  /* height: 100vh; */
   padding: 10px;
   border-left: 2px solid rgba(255, 255, 255, 0.3);
   border-right: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+#clients h2{
+  font-size: 8rem;
+  margin-left: 10rem;
+
+}
+.sec-clients {
+  overflow-x: hidden;
+  display: flex;
+  width: 80%;
+  gap: 10rem;
+  margin: 0 auto;
+}
+
+
+.sec-clients section {
+  min-width: 50vw;
+  min-height: 55vh;
+  max-height: 55vh;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.sec-clients section img{
+  object-fit: contain;
+}
+
 /* 4번째 영역 */
 #team {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   background: linear-gradient(150deg, #f0137a, #d8e46a, #f06013);
+}
+
+.slideSection {
+  margin: 0 auto;
+  width: 80vw;
+  /* height: 100vh; */
+  padding: 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 5번째 영역 */
+#lastdance {
+  width: 100%;
+  height: 100vh;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(150deg, #7ceeff, #3254b2, #5f1664);
 }
 
 .slideSection {
